@@ -16,9 +16,7 @@ const {
 
 const authenticator = async () => {
   try {
-    const response = await axios.get(
-      `${config.env.apiEndpoint}/api/auth/imagekit`
-    );
+    const response = await axios.get(`${config.env.apiEndpoint}/api/imagekit`);
 
     if (response.status !== 200) {
       toast.error("Request Failed");
@@ -41,7 +39,8 @@ const ImageUpload = ({ onFileChange }: Props) => {
   const [file, setFile] = useState<{ filePath: string } | null>(null);
 
   const onError = (error: any) => {
-    console.log(error);
+    console.log("This is the error when uploading an image: ", error);
+
     toast.error("Image upload failed");
   };
 
